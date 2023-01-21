@@ -1,36 +1,28 @@
 <template>
-  <div class="column mkb">
-    <div class="row input-div q-pa-sm mkb">
-      <div class="q-mx-sm col-8 mkb">
-        <q-input
-          outlined
-          v-model="summonPoint"
-          class="q-pa-none"
-          type="number"
-          label="뽑 sp"
-          min="10"
-          max="100000"
-          step="10"
-          :rules="[(val) => validateCost(val) || validationMsg]"
-          style="height: 100%"
-        />
+  <q-page class="row q-mt-lg justify-evenly">
+    <div class="column mkb">
+      <div class="row input-div q-pa-sm mkb">
+        <div class="q-ma-md cal-input mkb">
+          <q-input outlined v-model="summonPoint" class="q-pa-none" type="number" label="뽑 sp" min="10" max="100000"
+            step="10" :rules="[(val) => validateCost(val) || validationMsg]" style="height: 100%" />
+        </div>
+        <div class="q-ma-md cal-submit col-3 mkb">
+          <q-btn @click="computeTotalSP(summonPoint)">
+            계산하기
+          </q-btn>
+        </div>
       </div>
-      <div class="q-mx-sm col-3 mkb">
-        <q-btn @click="computeTotalSP(summonPoint)" style="height: 100%">
-          계산하기
-        </q-btn>
+      <div class="q-ma-md q-pa-md result-div text-left text-body1 mkb">
+        {{ resultText }}
       </div>
     </div>
-    <div class="q-pa-none result-div text-center text-body1 mkb">
-      {{ resultText }}
-    </div>
-  </div>
+  </q-page>
 </template>
 
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
 const totalSummPoint: Ref<number> = ref(10);
-const summonPoint: Ref<number> = ref(0);
+const summonPoint: Ref<number> = ref(10);
 const validationMsg = ref('');
 const resultText = ref('');
 
@@ -64,12 +56,23 @@ const computeTotalSP = (summP: number) => {
 .input-div {
   width: 800px;
   height: 80px;
+
+  .cal-input {
+    width: 300px;
+  }
+
+  .cal-submit {
+    button {
+      height: 56px;
+    }
+  }
 }
+
 .result-div {
   width: 800px;
 }
 
 .mkb {
-  border: solid 1px red !important;
+  // border: solid 1px red !important;
 }
 </style>
