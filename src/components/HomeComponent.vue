@@ -29,10 +29,7 @@ const validateWaves = (val: number) => {
     validationMsgWaves.value = '웨이브는 자연수이어야 합니다.';
     return false;
   } else if (val > 1000000) {
-    validationMsgWaves.value = '뽑sp는 100만 이하여야 합니다. (어차피 못하잖아)';
-    return false;
-  } else if (val % 10 != 0) {
-    validationMsgWaves.value = '뽑sp는 10의 제곱어야 합니다.';
+    validationMsgWaves.value = '웨이브는 100만 이하여야 합니다. (어차피 못하잖아)';
     return false;
   }
 
