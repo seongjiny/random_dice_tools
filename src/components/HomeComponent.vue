@@ -3,8 +3,8 @@
     <div class="column mkb">
       <div class="row input-div q-pa-sm mkb">
         <div class="q-ma-md cal-input mkb">
-          <q-input outlined v-model="summonPoint" class="q-pa-none" type="number" label="뽑 sp" min="10" max="100000"
-            step="10" :rules="[(val) => validateCost(val) || validationMsg]" style="height: 100%" />
+          <q-input outlined v-model="summonPoint" class="q-pa-none" type="number" label="뽑 sp" min="10" max="1000000"
+            step="10" :rules="[(val) => validateCost(val) || validationMsgSP]" style="height: 100%" />
         </div>
         <div class="q-ma-md cal-submit col-3 mkb">
           <q-btn @click="computeTotalSP(summonPoint)">
@@ -18,7 +18,7 @@
       <div class="row input-div q-pa-sm mkb">
         <div class="q-ma-md cal-input mkb">
           <q-input outlined v-model="waveNumber" class="q-pa-none" type="number" label="웨이브" min="1" max="100000"
-            step="1" style="height: 100%" />
+            step="1" :rules="[(val) => validateWaves(val) || validationMsgWaves]" style="height: 100%" />
         </div>
         <div class="q-ma-md cal-submit col-3 mkb">
           <q-btn @click="computeTotalCards(waveNumber)">
@@ -38,7 +38,8 @@
 import { Ref, ref } from 'vue';
 const totalSummPoint: Ref<number> = ref(10);
 const summonPoint: Ref<number> = ref(10);
-const validationMsg = ref('');
+const validationMsgSP = ref('');
+const validationMsgWaves = ref('');
 const totalSummPointText = ref('');
 const waveNumber = ref(0);
 const totalCardsText = ref('');
@@ -46,13 +47,25 @@ const totalCardsText = ref('');
 
 const validateCost = (val: number) => {
   if (val < 10) {
-    validationMsg.value = '뽑sp는 10 이상이어야 합니다.';
+    validationMsgSP.value = '뽑sp는 10 이상이어야 합니다.';
+    return false;
+  } else if (val > 100000) {
+    validationMsgSP.value = '최대 웨이브는 10만 입니다. (어차피 핵 아니면 못함)';
+    return false;
+  } 
+
+  return true;
+};
+
+const validateWaves = (val: number) => {
+  if (val < 0) {
+    validationMsgWaves.value = '웨이브는 자연수이어야 합니다.';
     return false;
   } else if (val > 1000000) {
-    validationMsg.value = '뽑sp는 100만 이하여야 합니다. (어차피 못하잖아)';
+    validationMsgWaves.value = '뽑sp는 100만 이하여야 합니다. (어차피 못하잖아)';
     return false;
   } else if (val % 10 != 0) {
-    validationMsg.value = '뽑sp는 10의 제곱어야 합니다.';
+    validationMsgWaves.value = '뽑sp는 10의 제곱어야 합니다.';
     return false;
   }
 
