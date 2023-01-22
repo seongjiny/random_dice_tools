@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row q-mt-lg justify-evenly">
+  <q-page class="row q-mt-lg">
     <div class="column mkb">
       <div class="row input-div q-pa-sm mkb">
         <div class="q-ma-md cal-input mkb">
@@ -66,13 +66,13 @@ const computeTotalSP = (summP: number) => {
     totalSummPoint.value += +cur;
     cur -= 10;
   }
-  totalSummPointText.value = `뽑sp ${summP}의 총 sp 량은 ${totalSummPoint.value}장`;
+  totalSummPointText.value = `뽑sp ${summP}의 총 sp 량은 ${totalSummPoint.value}`;
 };
 
 const computeTotalCards = (waves: number) => {
   let totalCards = 0;
   if (waves <= 45) {
-    while (waves > 5) {
+    while (waves >= 5) {
       waves -= 5;
       totalCards += 8;
     }
@@ -87,7 +87,7 @@ const computeTotalCards = (waves: number) => {
     }
     totalCards += (waves / 2) * 8;
   }
-  totalCardsText.value = `${waveNumber.value}웨이브 총 카드 획득량은 ${totalCards}`;
+  totalCardsText.value = `${waveNumber.value}웨이브 총 카드 획득량은 ${totalCards}장`;
 }
 </script>
 
@@ -97,7 +97,7 @@ const computeTotalCards = (waves: number) => {
   height: 80px;
 
   .cal-input {
-    width: 300px;
+    width: 200px;
   }
 
   .cal-submit {
