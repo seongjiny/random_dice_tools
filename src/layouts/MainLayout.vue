@@ -8,7 +8,7 @@
         </q-toolbar>
       </q-header>
 
-      <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="500" bordered class="bg-grey-3">
+      <!-- <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="500" bordered class="bg-grey-3">
         <q-scroll-area class="fit">
           <q-list>
 
@@ -26,35 +26,14 @@
 
           </q-list>
         </q-scroll-area>
-      </q-drawer>
+      </q-drawer> -->
 
       <q-page-container>
         <router-view />
       </q-page-container>
     </q-layout>
   </div>
-  <!-- <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> ROK 랜덤다이스</q-toolbar-title>
-
-
-       
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> 메뉴 </q-item-label>
-      </q-list>
-
-    </q-drawer>
-
-    <q-page-container>
-    </q-page-container>
-  </q-layout> -->
 </template>
 
 <script setup lang="ts">
@@ -106,7 +85,7 @@ const menuList = ref([
     separator: false
   }
 ]);
-
+menuList;
 const drawer = ref(false);
 
 

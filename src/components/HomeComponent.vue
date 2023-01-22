@@ -13,10 +13,25 @@
         </div>
       </div>
       <div class="q-ma-md q-pa-md result-div text-left text-body1 mkb">
-        {{ resultText }}
+        {{ totalSummPointText }}
+      </div>
+      <div class="row input-div q-pa-sm mkb">
+        <div class="q-ma-md cal-input mkb">
+          <q-input outlined v-model="waveNumber" class="q-pa-none" type="number" label="웨이브" min="1" max="100000"
+            step="1" style="height: 100%" />
+        </div>
+        <div class="q-ma-md cal-submit col-3 mkb">
+          <q-btn @click="computeTotalCards(waveNumber)">
+            계산하기
+          </q-btn>
+        </div>
+      </div>
+      <div class="q-ma-md q-pa-md result-div text-left text-body1 mkb">
+        {{ totalCardsText }}
       </div>
     </div>
   </q-page>
+
 </template>
 
 <script setup lang="ts">
@@ -24,7 +39,10 @@ import { Ref, ref } from 'vue';
 const totalSummPoint: Ref<number> = ref(10);
 const summonPoint: Ref<number> = ref(10);
 const validationMsg = ref('');
-const resultText = ref('');
+const totalSummPointText = ref('');
+const waveNumber = ref(0);
+const totalCardsText = ref('');
+
 
 const validateCost = (val: number) => {
   if (val < 10) {
@@ -48,8 +66,29 @@ const computeTotalSP = (summP: number) => {
     totalSummPoint.value += +cur;
     cur -= 10;
   }
-  resultText.value = `뽑sp ${summP}의 총 sp 량은 ${totalSummPoint.value}`;
+  totalSummPointText.value = `뽑sp ${summP}의 총 sp 량은 ${totalSummPoint.value}장`;
 };
+
+const computeTotalCards = (waves: number) => {
+  let totalCards = 0;
+  if (waves <= 45) {
+    while (waves > 5) {
+      waves -= 5;
+      totalCards += 8;
+    }
+    totalCards += waves;
+    if (waves >= 3) totalCards++;
+  } else {
+    waves -= 45;
+    totalCards += 72;
+    if (waves % 2 == 1) {
+      waves--;
+      totalCards += 2;
+    }
+    totalCards += (waves / 2) * 8;
+  }
+  totalCardsText.value = `${waveNumber.value}웨이브 총 카드 획득량은 ${totalCards}`;
+}
 </script>
 
 <style lang="scss">
