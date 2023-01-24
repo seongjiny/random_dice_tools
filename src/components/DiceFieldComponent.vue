@@ -31,7 +31,7 @@ const getImageSrc = (i: number, j: number) => {
 
 const resetField = () => {
     dice_id_array.value = temp.value.map(x => x.slice());
-    moves_array.value.push(current_moves.value);
+    moves_array.value.unshift(current_moves.value);
     current_moves.value = '';
     console.log(temp.value);
 }
@@ -121,9 +121,12 @@ const saveField = () => {
                 선택된 주사위 :
                 <img :src="DICE_IMAGE_MAP[current_id].src" />
             </div>
-            <div class="row q-my-md">
-                <div> {{ current_moves }}</div>
+            <div class="column q-my-md">
+
+                <div>현재: {{ current_moves }}</div>
+                
                 <div class="column">
+                    <div> 기록관 </div>
                     <div v-for="move in moves_array" :key="move"> {{ move }}</div>
                 </div>
             </div>
