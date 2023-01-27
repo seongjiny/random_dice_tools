@@ -8,12 +8,26 @@
         </q-toolbar>
       </q-header>
 
-      <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="500" bordered class="bg-grey-3">
+      <q-drawer
+        v-model="drawer"
+        show-if-above
+        :width="200"
+        :breakpoint="500"
+        bordered
+        class="bg-grey-3"
+      >
         <q-scroll-area class="fit">
           <q-list>
-
             <template v-for="(menuItem, index) in menuList" :key="index">
-              <q-item @click="$router.push(menuItem.route); currentLabel = menuItem.label" clickable :active="menuItem.label === currentLabel" v-ripple>
+              <q-item
+                @click="
+                  $router.push(menuItem.route);
+                  currentLabel = menuItem.label;
+                "
+                clickable
+                :active="menuItem.label === currentLabel"
+                v-ripple
+              >
                 <q-item-section avatar>
                   <q-icon :name="menuItem.icon" />
                 </q-item-section>
@@ -23,7 +37,6 @@
               </q-item>
               <q-separator :key="'sep' + index" v-if="menuItem.separator" />
             </template>
-
           </q-list>
         </q-scroll-area>
       </q-drawer>
@@ -33,11 +46,10 @@
       </q-page-container>
     </q-layout>
   </div>
-
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 const currentLabel = ref('계산기');
 const menuList = ref([
   {
@@ -50,10 +62,14 @@ const menuList = ref([
     icon: 'view_timeline',
     label: '필드깔기',
     separator: false,
-    route: '/field'
+    route: '/field',
+  },
+  {
+    icon: 'app_registration',
+    label: '퀀텀 계산기',
+    separator: false,
+    route: '/solver',
   },
 ]);
 const drawer = ref(false);
-
-
 </script>

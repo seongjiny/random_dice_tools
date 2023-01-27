@@ -19,10 +19,6 @@ const dice_id_array = ref([
     ['qm', 'qm', 'qm', 'qm', 'qm',],
 ]);
 
-
-// console.log(dice_id_array.value[0][0]);
-// console.log(DICE_IMAGE_MAP[(dice_id_array.value[0][0] as keyof DICE_IMAGE_MAP)]);
-
 const getImageSrc = (i: number, j: number) => {
     i -= 1;
     j -= 1;
@@ -117,7 +113,7 @@ const saveField = () => {
             </div>
 
             <hr />
-            <div class="row q-my-md">
+            <div class="row q-my-md" v-if="!simMode">
                 선택된 주사위 :
                 <img :src="DICE_IMAGE_MAP[current_id].src" />
             </div>

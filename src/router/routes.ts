@@ -10,6 +10,10 @@ const routes: RouteRecordRaw[] = [
         path: 'field',
         component: () => import('components/DiceFieldComponent.vue'),
       },
+      {
+        path: 'solver',
+        component: () => import('components/QuanSolverComponent.vue'),
+      },
     ],
   },
 

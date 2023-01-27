@@ -5,9 +5,9 @@ const DICE_IMAGE_ARRAY: Dice[] = [
     id: 'charge',
   },
   {
-    name: '빛의 검',
-    src: require('src/assets/dice-images/holy_sword.webp'),
-    id: 'hsword',
+    name: '태양',
+    src: require('src/assets/dice-images/solar.webp'),
+    id: 'solar',
   },
   {
     name: '달',
@@ -15,9 +15,9 @@ const DICE_IMAGE_ARRAY: Dice[] = [
     id: 'lunar',
   },
   {
-    name: '지뢰',
-    src: require('src/assets/dice-images/mine.webp'),
-    id: 'mine',
+    name: '빛의 검',
+    src: require('src/assets/dice-images/holy_sword.webp'),
+    id: 'hsword',
   },
   {
     name: '조준경',
@@ -25,20 +25,20 @@ const DICE_IMAGE_ARRAY: Dice[] = [
     id: 'scope',
   },
   {
+    name: '지뢰',
+    src: require('src/assets/dice-images/mine.webp'),
+    id: 'mine',
+  },
+  {
     name: '눈덩이',
     src: require('src/assets/dice-images/snowball.webp'),
     id: 'snowb',
   },
   {
-    name: '태양',
-    src: require('src/assets/dice-images/solar.webp'),
-    id: 'solar',
-  },
-  {
     name: '코어',
     src: require('src/assets/dice-images/core.png'),
     id: 'core',
-  }
+  },
 ];
 
 const DICE_IMAGE_MAP = {
