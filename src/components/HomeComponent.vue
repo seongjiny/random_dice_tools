@@ -146,11 +146,8 @@ const updateSoulValues = () => {
       </div>
       <q-separator />
       <div class="input-div q-pa-sm mkb">
-        <div
-          class="row justify-end text-bold rainbow_text_animated"
-          style="width: 450px"
-        >
-          <small>Made by 이프</small>
+        <div class="row text-bold rainbow_text_animated" style="width: 400px">
+          <small class="moving">Made by 이프</small>
         </div>
         <div class="q-ma-md cal-input2 row">
           <q-input
@@ -278,10 +275,12 @@ img {
   0%,
   100% {
     background-position: 0 0;
+    transform: translate(100px, 0);
   }
 
   50% {
     background-position: 100% 0;
+    transform: translate(150px, 0);
   }
 }
 </style>
