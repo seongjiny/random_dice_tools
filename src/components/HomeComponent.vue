@@ -146,6 +146,12 @@ const updateSoulValues = () => {
       </div>
       <q-separator />
       <div class="input-div q-pa-sm mkb">
+        <div
+          class="row justify-end text-bold rainbow_text_animated"
+          style="width: 450px"
+        >
+          <small>Made by 이프</small>
+        </div>
         <div class="q-ma-md cal-input2 row">
           <q-input
             outlined
@@ -250,5 +256,32 @@ const updateSoulValues = () => {
 img {
   width: 50px;
   height: 50px;
+}
+
+.rainbow_text_animated {
+  background: linear-gradient(
+    to right,
+    #6666ff,
+    #0099ff,
+    #00ff00,
+    #ff3399,
+    #6666ff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 1s ease-in-out infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
 }
 </style>
