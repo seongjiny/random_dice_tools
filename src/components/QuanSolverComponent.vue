@@ -3,7 +3,7 @@ import {
   DICE_IMAGE_ARRAY,
   DICE_IMAGE_MAP,
 } from 'src/components/images/image-loader';
-import { ref, Ref } from 'vue';
+import { ref } from 'vue';
 import useNotify from 'src/components/common/useNotify';
 import { EMPTY_FIELD, 충달검조눈정답 } from 'src/components/data/field';
 
@@ -17,7 +17,7 @@ const preset_deck = ref(['충달검조눈']);
 const 충달검조눈 = ref(['charge', 'lunar', 'hsword', 'scope', 'snowb', 'core']);
 const dice_id_array = ref(EMPTY_FIELD);
 const goal = ref(충달검조눈정답);
-const answers: Ref<string[]> = ref([]);
+const answers = ref([] as string[]);
 const failMsg = ref('');
 
 const dice_images = ref(

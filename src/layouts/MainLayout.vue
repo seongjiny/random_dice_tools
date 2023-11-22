@@ -70,6 +70,12 @@ const menuList = ref([
     separator: false,
     route: '/solver',
   },
+  {
+    icon: 'app_registration',
+    label: '퀀텀 계산기 v2',
+    separator: false,
+    route: '/solver2',
+  },
 ]);
 const drawer = ref(false);
 </script>

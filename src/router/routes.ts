@@ -14,6 +14,10 @@ const routes: RouteRecordRaw[] = [
         path: 'solver',
         component: () => import('components/QuanSolverComponent.vue'),
       },
+      {
+        path: 'solver2',
+        component: () => import('components/QuanSolver2Component.vue'),
+      },
     ],
   },
 
